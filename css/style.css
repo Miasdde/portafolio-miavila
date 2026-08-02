@@ -170,7 +170,6 @@ a{
 	gap:50px;
 	padding:70px 0 35px;
 }
-}
 
 .hero-editorial-left{
 	min-width:0;
@@ -192,6 +191,16 @@ a{
 	font-size:16px;
 	line-height:1.35;
 	letter-spacing:-0.02em;
+}
+
+.hero-editorial-left .hero-disciplines{
+	margin-top:14px;
+	font-size:11px;
+	font-weight:700;
+	letter-spacing:.12em;
+	line-height:1.5;
+	text-transform:uppercase;
+	color:rgba(16,16,16,.62);
 }
 
 .hero-editorial-right{
@@ -310,26 +319,167 @@ a{
 
 /* ABOUT CONTENT */
 
-.about-content{
-	display:grid;
-	grid-template-columns:0.7fr 1.5fr;
-	gap:60px;
-	padding:56px 0 90px;
+.about-postcard{
+	position:relative;
+	margin:62px auto 90px;
+	padding:34px 38px 42px;
+	background:#fffdf5;
+	border:1px solid rgba(16,16,16,.18);
+	box-shadow:
+		0 22px 50px rgba(16,16,16,.09),
+		0 2px 0 rgba(16,16,16,.08);
+	transform:rotate(-.45deg);
+	transition:
+		transform .45s cubic-bezier(.2,.7,.2,1),
+		box-shadow .45s ease;
+	overflow:hidden;
 }
 
-.about-label p{
-	margin:4px 0 0;
-	font-size:13px;
-	font-weight:700;
+.about-postcard:hover{
+	transform:rotate(.15deg) translateY(-8px);
+	box-shadow:
+		0 34px 70px rgba(16,16,16,.14),
+		0 2px 0 rgba(16,16,16,.08);
+}
+
+.postcard-top{
+	display:flex;
+	justify-content:space-between;
+	align-items:flex-start;
+	gap:24px;
+	padding-bottom:28px;
+	border-bottom:1px solid rgba(16,16,16,.16);
+}
+
+.postcard-label{
+	margin:0;
+	font-size:12px;
+	font-weight:800;
+	letter-spacing:.08em;
 	text-transform:uppercase;
 }
 
-.about-label span{
-	margin-right:4px;
+.postcard-label span{
+	margin-right:5px;
+}
+
+.postcard-stamp{
+	width:82px;
+	height:96px;
+	flex:0 0 82px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	gap:3px;
+	color:var(--color-black);
+	background:var(--color-lime);
+	border:1px dashed rgba(16,16,16,.55);
+	box-shadow:inset 0 0 0 5px rgba(255,255,255,.38);
+	transform:rotate(4deg);
+}
+
+.postcard-stamp span{
+	font-size:18px;
+	font-weight:900;
+	letter-spacing:-.05em;
+}
+
+.postcard-stamp small{
+	font-size:9px;
+	font-weight:800;
+	letter-spacing:.12em;
+}
+
+.postcard-body{
+	display:grid;
+	grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);
+	gap:64px;
+	padding-top:38px;
 }
 
 .about-copy{
-	max-width:920px;
+	max-width:900px;
+}
+
+.postcard-address{
+	position:relative;
+	padding-left:36px;
+	border-left:1px solid rgba(16,16,16,.2);
+}
+
+.postcard-to{
+	margin:0 0 28px;
+	font-size:12px;
+	font-weight:800;
+	letter-spacing:.05em;
+	text-transform:uppercase;
+}
+
+.postcard-lines{
+	display:grid;
+	gap:18px;
+}
+
+.postcard-lines span{
+	display:block;
+	height:1px;
+	background:rgba(16,16,16,.22);
+}
+
+.postcard-signature{
+	margin:42px 0 0;
+	font-size:14px;
+	line-height:1.55;
+}
+
+.postcard-signature strong{
+	display:inline-block;
+	margin-top:5px;
+	font-size:28px;
+	font-style:italic;
+	font-weight:500;
+	letter-spacing:-.05em;
+}
+
+.postcard-mark{
+	position:absolute;
+	right:130px;
+	top:34px;
+	width:116px;
+	height:116px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	gap:4px;
+	border:2px solid rgba(16,16,16,.12);
+	border-radius:50%;
+	color:rgba(16,16,16,.28);
+	font-size:8px;
+	font-weight:800;
+	letter-spacing:.12em;
+	text-transform:uppercase;
+	transform:rotate(-10deg);
+	pointer-events:none;
+}
+
+.postcard-mark::before,
+.postcard-mark::after{
+	content:"";
+	position:absolute;
+	left:98px;
+	width:105px;
+	height:1px;
+	background:rgba(16,16,16,.14);
+}
+
+.postcard-mark::before{
+	top:42px;
+}
+
+.postcard-mark::after{
+	top:60px;
 }
 
 .about-copy p{
@@ -342,6 +492,10 @@ a{
 
 .about-copy p:last-child{
 	margin-bottom:0;
+}
+
+.about-copy p:first-child{
+	font-weight:500;
 }
 
 
@@ -541,40 +695,27 @@ a{
 
 /* INDIVIDUAL IMAGE ADJUSTMENTS */
 
-/* BelPets */
+/* 01. Cherry Coke */
 .project-item:nth-child(1) .project-image img{
-	object-fit:contain;
-	object-position:center;
-	background-color:#c8c1e8;
-}
-
-/* Reefium */
-.project-item:nth-child(2) .project-image img{
 	object-fit:cover;
 	object-position:center;
 }
 
-/* Cherry Coke */
+/* 02. BelPets */
+.project-item:nth-child(2) .project-image img{
+	object-fit:cover;
+	object-position:center;
+	background-color:#c8c1e8;
+}
+
+/* 03. Reefium */
 .project-item:nth-child(3) .project-image img{
 	object-fit:cover;
 	object-position:center;
 }
 
-/* Google */
+/* 04. Existen Otras Huellas */
 .project-item:nth-child(4) .project-image img{
-	object-fit:contain;
-	object-position:center;
-	background-color:#fff;
-}
-
-/* Photography */
-.project-item:nth-child(5) .project-image img{
-	object-fit:cover;
-	object-position:center;
-}
-
-/* Existen Otras Huellas */
-.project-item:nth-child(6) .project-image img{
 	object-fit:cover;
 	object-position:center;
 }
@@ -605,6 +746,14 @@ a{
 	font-weight:600;
 	line-height:0.9;
 	letter-spacing:-0.06em;
+}
+
+.contact-availability{
+	max-width:620px;
+	margin:26px 0 0;
+	font-size:15px;
+	line-height:1.6;
+	color:var(--color-gray);
 }
 
 .contact-cta-link{
@@ -642,7 +791,7 @@ a{
 
 .footer-top{
 	display:grid;
-	grid-template-columns:repeat(3, 1fr);
+	grid-template-columns:repeat(4, 1fr);
 	gap:70px;
 	padding-bottom:90px;
 }
@@ -777,9 +926,16 @@ a{
 		height:460px;
 	}
 
-	.about-content{
+	.postcard-body{
 		grid-template-columns:1fr;
-		gap:28px;
+		gap:38px;
+	}
+
+	.postcard-address{
+		padding-left:0;
+		padding-top:30px;
+		border-left:0;
+		border-top:1px solid rgba(16,16,16,.2);
 	}
 
 	.work-header{
@@ -898,6 +1054,12 @@ a{
 		font-size:14px;
 	}
 
+	.hero-editorial-left .hero-disciplines{
+		margin-top:12px;
+		font-size:9px;
+		letter-spacing:.09em;
+	}
+
 	.hero-editorial-right{
 		align-self:flex-start;
 	}
@@ -942,8 +1104,28 @@ a{
 		line-height:1.02;
 	}
 
-	.about-content{
-		padding:38px 0 65px;
+	.about-postcard{
+		margin:38px auto 65px;
+		padding:24px 22px 30px;
+		transform:none;
+	}
+
+	.about-postcard:hover{
+		transform:translateY(-4px);
+	}
+
+	.postcard-top{
+		padding-bottom:22px;
+	}
+
+	.postcard-stamp{
+		width:68px;
+		height:80px;
+		flex-basis:68px;
+	}
+
+	.postcard-mark{
+		display:none;
 	}
 
 	.about-copy p{
@@ -1004,6 +1186,11 @@ a{
 	.contact-cta h2{
 		font-size:42px;
 		line-height:.94;
+	}
+
+	.contact-availability{
+		margin-top:20px;
+		font-size:14px;
 	}
 
 	.footer-top{
